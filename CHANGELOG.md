@@ -1,20 +1,44 @@
-# Version 4 (2019-10-20)
+# Version 0.1.5 (2020-07-06)
 
-## Features
-* Add some texts to dummy.txt ([5f7b84](https://github.com/jackyef/changelog-generator/commit/5f7b841665e83d5babf27c682716b2a7546605e9))
+## Minor Changes
+### Tweaks
+* if build_version is NaN, will increment revision number ([46fbff](https://github.com/jackyef/changelog-generator/commit/46fbffcaeb0300afcb22f9c3ba29a6a994a8ffe7))
 
-# Version 3 (2019-10-20)
+# Version 0.1.3 (2020-07-06)
 
-## Features
-* Implemented versioning for the changelog generator ([e8a626](https://github.com/jackyef/changelog-generator/commit/e8a626fb857c35acd9f4f4e092b93e9951120ae8))
+## Minor Changes
+# Version 0.1.2 (2020-07-06)
 
-## Chores
-* Added dummy.txt file ([b9491e](https://github.com/jackyef/changelog-generator/commit/b9491e3c9a22bddff528e48fd599b08c0eafcce1))
+## Minor Changes
+# Version 0.1.2 (2020-07-06)
 
-# Version 2 (2019-10-20)
+# Version 0.1.2 (2020-07-06)
 
-## Features
-* Added index.js script ([1c3ec7](https://github.com/jackyef/changelog-generator/commit/1c3ec7c03f2796790eaf7271ef47b2141b22cb63))
+## Minor Changes
+# Version 0.1.1 (2020-07-06)
 
-## Chores
-* Initial commit for changelog generator ([05fbe5](https://github.com/jackyef/changelog-generator/commit/05fbe5c5eee29cc33065474800e5401370e7e929))
+# Version 0.1.1 (2020-07-06)
+
+## Minor Changes
+### Bugs
+* corrected package import string ([6826a4](https://github.com/jackyef/changelog-generator/commit/6826a489f2821d243260e5e724ed4ccf1f383d99))
+
+# Version 0.1.0 (2020-07-06)
+
+## Minor Changes
+### Features
+* can list remote git path in package.json ([cf55c6](https://github.com/jackyef/changelog-generator/commit/cf55c634113101c64c30de9e14dfbb46a77d70fe))
+
+# Version 0.0.3 (2020-07-06)
+
+## Minor Changes
+### Tweaks
+* Added author line ([d40db2](https://github.com/jackyef/changelog-generator/commit/d40db297541768f2d8c45bccf722d3bfa25ec6e2))
+
+# Version 0.0.2 (2020-07-06)
+
+# Version 0.0.1 (2020-07-06)
+
+## Minor Changes
+# Version 0.0.1 (2020-07-06)
+

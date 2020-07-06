@@ -1,3 +1,9 @@
 {
-  "version": "4"
+  "name": "changelog-generator",
+  "author": "Ben Weatherall",
+  "git-remote-path": "https://github.com/jackyef/changelog-generator/",
+  "version": "0.1.5",
+  "bin": {
+    "changelog-generator": "./index.js"
+  }
 }
