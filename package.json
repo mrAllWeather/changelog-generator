@@ -3,7 +3,7 @@
   "author": "Ben Weatherall",
   "git-remote-path": "https://github.com/mrAllWeather/changelog-generator/",
   "auto-push": true,
-  "version": "0.1.8",
+  "version": "0.1.9",
   "bin": {
     "changelog-generator": "./index.js"
   }

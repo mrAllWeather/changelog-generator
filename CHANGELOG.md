@@ -1,3 +1,12 @@
+# Version 0.1.9 (2020-07-07)
+
+## Minor Changes
+### Bugs
+* Now generates CHANGELOG.md if doesn't exist ([916026](https://github.com/mrAllWeather/changelog-generator/commit/916026c8c32bc0424616ec20714f7af720ad6b3c))
+
+### Tweaks
+* Corrected Bump commit prefix ([e0a184](https://github.com/mrAllWeather/changelog-generator/commit/e0a184d75af326c08013e6afc57279e4493748b8))
+
 # Version 0.1.8 (2020-07-07)
 
 ## Minor Changes
