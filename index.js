@@ -156,7 +156,7 @@ fs.writeFileSync("./package.json", JSON.stringify(package_info, null, 2));
 
 // create a new commit
 child.execSync('git add .');
-child.execSync(`git commit -m "[chore]: Bump to version ${newVersion}"`);
+child.execSync(`git commit -m "[Chore]: Bump to version ${newVersion}"`);
 
 // tag the commit
 child.execSync(`git tag -a -m "Tag for version ${newVersion}" v${newVersion}`);
