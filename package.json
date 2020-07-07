@@ -2,7 +2,7 @@
   "name": "changelog-generator",
   "author": "Ben Weatherall",
   "git-remote-path": "https://github.com/mrAllWeather/changelog-generator/",
-  "version": "0.1.7",
+  "version": "0.1.7.0",
   "bin": {
     "changelog-generator": "./index.js"
   }
