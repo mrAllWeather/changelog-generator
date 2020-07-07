@@ -1,5 +1,10 @@
 # Version 0.1.10 (2020-07-07)
 
+
+## Minor Changes
+### Features
+* Added option to auto-commit to remove repository.
+ 
 # Version 0.1.9 (2020-07-07)
 
 ## Minor Changes
