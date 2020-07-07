@@ -43,9 +43,9 @@ let tweaks = [];
 let chores = [];
 
 function processCommitPrefix(commit, prefixString, array){
-    if(commit.message.startsWith(`${prefixString}: `)) {
+    if(commit.message.startsWith(`${prefixString} `)) {
         array.push(
-            `* ${commit.message.replace(`${prefixString}: `, "")} ([${commit.sha.substring(
+            `* ${commit.message.replace(`${prefixString} `, "")} ([${commit.sha.substring(
                 0,
                 6
             )}](${git_path}commit/${
@@ -70,22 +70,22 @@ function addChangeLine(array, ArrayString, logBuffer){
 
 commitArray.forEach(commit => {
     // Major Changes 
-    majorDeprecations = processCommitPrefix(commit, "!dep", majorDeprecations);
-    majorFeatures = processCommitPrefix(commit, "!feature", majorFeatures);
+    majorDeprecations = processCommitPrefix(commit, "![Dep]", majorDeprecations);
+    majorFeatures = processCommitPrefix(commit, "![Feature]", majorFeatures);
     
     // Minor Changes
-    deprecations = processCommitPrefix(commit, "dep", deprecations);
-    features = processCommitPrefix(commit, "feature", features);
+    deprecations = processCommitPrefix(commit, "[Dep]", deprecations);
+    features = processCommitPrefix(commit, "[Feature]", features);
     
     // Revision Changes
-    bugs = processCommitPrefix(commit, "bug", bugs);
-    tweaks = processCommitPrefix(commit, "tweak", tweaks);
-    chores = processCommitPrefix(commit, "chore", chores);
+    bugs = processCommitPrefix(commit, "[Bug]", bugs);
+    tweaks = processCommitPrefix(commit, "[Tweak]", tweaks);
+    chores = processCommitPrefix(commit, "[Chore]", chores);
     
     // Bugs, Tweaks and Chores are not major updates, catch any accidental slips
-    bugs = processCommitPrefix(commit, "!bug", bugs);
-    tweaks = processCommitPrefix(commit, "!tweak", tweaks);
-    chores = processCommitPrefix(commit, "!chore", chores);
+    bugs = processCommitPrefix(commit, "![Bug]", bugs);
+    tweaks = processCommitPrefix(commit, "![Tweak]", tweaks);
+    chores = processCommitPrefix(commit, "![Chore]", chores);
     
 });
 
