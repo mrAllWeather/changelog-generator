@@ -48,14 +48,25 @@ let chores = [];
 
 function processCommitPrefix(commit, prefixString, array){
     if(commit.message.startsWith(`${prefixString} `)) {
-        array.push(
-            `* ${commit.message.replace(`${prefixString} `, "")} ([${commit.sha.substring(
-                0,
-                6
-            )}](${git_path}commit/${
-                commit.sha
-            }))\n`
-        );
+        if(git_path == undefined || git_path == ""){
+            array.push(
+                `* ${commit.message.replace(`${prefixString} `, "")} (${commit.sha.substring(
+                    0,
+                    6
+                )})\n`
+            );
+        } else {
+            array.push(
+                `* ${commit.message.replace(`${prefixString} `, "")} ([${commit.sha.substring(
+                    0,
+                    6
+                )}](${git_path}commit/${
+                    commit.sha
+                }))\n`
+            );    
+        }
+        
+        
     }
     return array;
 }
@@ -149,3 +160,11 @@ child.execSync(`git commit -m "[chore]: Bump to version ${newVersion}"`);
 
 // tag the commit
 child.execSync(`git tag -a -m "Tag for version ${newVersion}" v${newVersion}`);
+
+if(git_path == undefined || git_path == ""){
+   // pass 
+} else if(require('./package')["auto-push"]){
+    let remote_git = git_path.replace(/\/$/,".git");
+    child.execSync(`git push`);
+    child.execSync(`git push ${remote_git} v${newVersion}`);
+}
