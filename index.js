@@ -5,15 +5,17 @@
  */
 
 const child = require('child_process');
-const fs = require('fs');
+const fs = require('fs'),
+    path = require('path');
 
-const git_path = require('./package')["git-remote-path"];
+const cwd = process.cwd();
+const version_details = require(path.join(cwd,'package'));
+const git_path = version_details["git-remote-path"];
 
-
-const latestTag = child.execSync(`git describe --long`).toString('utf-8').split('-')[0];
+const latestTag = child.execSync(`git describe --long`, {cwd: cwd}).toString('utf-8').split('-')[0];
 
 const output = child
-    .execSync(`git log ${latestTag}..HEAD --format=%B%H-----DELIMITER-----`)
+    .execSync(`git log ${latestTag}..HEAD --format=%B%H-----DELIMITER-----`, {cwd: cwd})
     .toString('utf-8');
 
 const commitArray = output.split('-----DELIMITER-----\n').map(commit => {
@@ -29,7 +31,7 @@ if(!fs.existsSync("./CHANGELOG.md")){
 
 const currentChangeLog = fs.readFileSync("./CHANGELOG.md", {encoding: "utf-8", flag: "r+"});
 let currentMajorVersion, currentMinorVersion, currentRevisionVersion, currentBuildNumber;
-[currentMajorVersion, currentMinorVersion, currentRevisionVersion,currentBuildNumber] = require("./package").version.split('.');
+[currentMajorVersion, currentMinorVersion, currentRevisionVersion,currentBuildNumber] = version_details.version.split('.');
 
 let newMajorVersion = Number(currentMajorVersion),
     newMinorVersion = Number(currentMinorVersion),
@@ -150,21 +152,21 @@ newChangeLog = addChangeLine(tweaks, "Tweaks", newChangeLog);
 fs.writeFileSync("./CHANGELOG.md", `${newChangeLog}${currentChangeLog}`);
 
 // update package.json
-let package_info = require("./package");
+let package_info = require(path.join(cwd,'package'));
 package_info.version = newVersion;
 fs.writeFileSync("./package.json", JSON.stringify(package_info, null, 2));
 
 // create a new commit
-child.execSync('git add .');
-child.execSync(`git commit -m "[Chore]: Bump to version ${newVersion}"`);
+child.execSync('git add .', {cwd: cwd});
+child.execSync(`git commit -m "[Chore]: Bump to version ${newVersion}"`, {cwd: cwd});
 
 // tag the commit
-child.execSync(`git tag -a -m "Tag for version ${newVersion}" v${newVersion}`);
+child.execSync(`git tag -a -m "Tag for version ${newVersion}" v${newVersion}`, {cwd: cwd});
 
 if(git_path == undefined || git_path == ""){
    // pass 
-} else if(require('./package')["auto-push"]){
+} else if(version_details["auto-push"]){
     let remote_git = git_path.replace(/\/$/,".git");
-    child.execSync(`git push`,{stdio: 'inherit'});
-    child.execSync(`git push ${remote_git} v${newVersion}`,{stdio: 'inherit'});
+    child.execSync(`git push`, {stdio: 'inherit', cwd: cwd });
+    child.execSync(`git push ${remote_git} v${newVersion}`, {stdio: 'inherit', cwd: cwd});
 }
