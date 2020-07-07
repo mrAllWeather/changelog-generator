@@ -12,13 +12,16 @@ Requirements Git and Node to be installed and available from your command line.
 Within your project you need to include a package.json file with the following format. Additional fields may be included.
 ```
 {
-     "git-remote-path": "https://github.com/mrAllWeather/changelog-generator/",
-     "version": "0.1.7"
+    "version": "0.1.7",
+    "git-remote-path": "https://github.com/mrAllWeather/changelog-generator/",
+    "auto-push": true
 }
 ```
 Fields
-* git-remote-path: The current remote path of your git project
 * version: The current 3-4 value version number. If you include a 4th value it will be considered a build number and will be automatically incremented
+* git-remote-path (optional): The current remote path of your git project
+* auto-push (optional, req. git-remote-path): Automatically perform git push on repo and tag after generating Changelog
+
 
 ## Installation
 Download this package and at the command line run 
