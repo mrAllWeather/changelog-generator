@@ -166,6 +166,7 @@ child.execSync(`git tag -a -m "Tag for version ${newVersion}" v${newVersion}`, {
 if(git_path == undefined || git_path == ""){
    // pass 
 } else if(version_details["auto-push"]){
+    console.log(version_details["auto-push"]);
     let remote_git = git_path.replace(/\/$/,".git");
     child.execSync(`git push`, {stdio: 'inherit', cwd: cwd });
     child.execSync(`git push ${remote_git} v${newVersion}`, {stdio: 'inherit', cwd: cwd});
