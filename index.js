@@ -23,7 +23,11 @@ const commitArray = output.split('-----DELIMITER-----\n').map(commit => {
 }).filter(commit => Boolean(commit.sha));
 
 // Version Setup
-const currentChangeLog = fs.readFileSync("./CHANGELOG.md", "utf-8");
+if(!fs.existsSync("./CHANGELOG.md")){
+    fs.writeFileSync("./CHANGELOG.md", "");
+}
+
+const currentChangeLog = fs.readFileSync("./CHANGELOG.md", {encoding: "utf-8", flag: "r+"});
 let currentMajorVersion, currentMinorVersion, currentRevisionVersion, currentBuildNumber;
 [currentMajorVersion, currentMinorVersion, currentRevisionVersion,currentBuildNumber] = require("./package").version.split('.');
 
