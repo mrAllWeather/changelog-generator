@@ -1,3 +1,12 @@
+# Version 0.1.8 (2020-07-07)
+
+## Minor Changes
+### Bugs
+* Node projects cannot have 4 digit version numbers ([0dafd3](https://github.com/mrAllWeather/changelog-generator/commit/0dafd3df6d54ac35d09b9fd6cbbccede3278d31a))
+
+### Tweaks
+* Updated README.md to include requirements and usage ([70069d](https://github.com/mrAllWeather/changelog-generator/commit/70069d193ac97b74fa70ac84bb8c24ee0230e6fa))
+
 # Version 0.0.0-0.1.7 (2020-07-06)
 
 ## Major Changes
