@@ -165,6 +165,6 @@ if(git_path == undefined || git_path == ""){
    // pass 
 } else if(require('./package')["auto-push"]){
     let remote_git = git_path.replace(/\/$/,".git");
-    child.execSync(`git push`);
-    child.execSync(`git push ${remote_git} v${newVersion}`);
+    child.execSync(`git push`,{stdio: 'inherit'});
+    child.execSync(`git push ${remote_git} v${newVersion}`,{stdio: 'inherit'});
 }
